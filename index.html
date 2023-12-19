@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Joe Smith - Web Hacker</title>
+  <style>
+    body {
+      font-family: 'Courier New', monospace;
+      margin: 0;
+      padding: 0;
+      background: #000; /* Dark background color */
+      color: #0f0; /* Green text color */
+      line-height: 1.6;
+      background-image: url('path/to/matrix-code.gif'); /* Matrix code background */
+      background-repeat: repeat;
+      background-size: cover;
+    }
+
+    header {
+      background: #000; /* Dark background color */
+      color: #0f0; /* Green text color */
+      padding: 50px 20px;
+      text-align: center;
+      border-bottom: 2px solid #0f0; /* Green border color */
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 3em;
+    }
+
+    p {
+      margin-top: 5px;
+      font-size: 1.2em;
+    }
+
+    nav {
+      background: #000; /* Dark background color */
+      color: #0f0; /* Green text color */
+      padding: 15px;
+      text-align: center;
+    }
+
+    nav a {
+      color: #0f0;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      font-size: 1.2em;
+      transition: color 0.3s ease;
+      border: 2px solid #0f0; /* Green border color */
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+
+    nav a:hover {
+      color: #f00; /* Red hover color */
+      background-color: #000; /* Dark background color */
+    }
+
+    section {
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    project-container {
+      max-width: 800px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    .project {
+      display: none;
+      border: 2px solid #0f0; /* Green border color */
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px;
+      text-align: left;
+      background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+      box-shadow: 0 4px 8px rgba(0, 255, 0, 0.3); /* Green shadow */
+    }
+
+    .project.active {
+      display: block;
+    }
+
+    .toggle-btn {
+      background: #0f0; /* Green button color */
+      color: #000; /* Dark text color */
+      padding: 15px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      font-size: 1.2em;
+    }
+
+    .toggle-btn:hover {
+      background: #f00; /* Red hover color */
+    }
+
+    footer {
+      background: #000; /* Dark background color */
+      color: #0f0; /* Green text color */
+      padding: 50px 20px;
+      text-align: center;
+      border-top: 2px solid #0f0; /* Green border color */
+    }
+
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 255, 0, 0.3); /* Green shadow */
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #0f0; /* Green border color */
+      border-radius: 6px;
+      box-sizing: border-box;
+      background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+      color: #0f0; /* Green text color */
+    }
+
+    input[type="submit"] {
+      background: #0f0; /* Green submit button color */
+      color: #000; /* Dark text color */
+      cursor: pointer;
+      transition: background 0.3s ease;
+      padding: 15px 20px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 5px;
+    }
+
+    input[type="submit"]:hover {
+      background: #f00; /* Red hover color */
+    }
+
+    @media screen and (min-width: 768px) {
+      section.container {
+        max-width: 600px; /* Adjust the width as needed for larger screens */
+        margin: 0 auto; /* Center the section horizontally */
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Joe Smith</h1>
+    <p>Web Hacker</p>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="about" class="container">
+    <h2>About Me</h2>
+    <p>I am a web hacker with a mission to uncover the secrets of the digital realm. Exploring cutting-edge technologies to break boundaries and create innovative web solutions.</p>
+  </section>
+
+  <section id="projects" class="container">
+    <h2>Weather Info: </h2>
+    <div id="weather-info"></div>
+    <h2>Projects</h2>
+    <div id="github-projects" class="project-container">
+      GitHub projects will be dynamically added here 
+    </div>
+    <button class="toggle-btn" onclick="toggleProjects()">Toggle Projects</button>
+  </section>
+
+  <footer id="contact" class="container">
+    <h2>Contact Me</h2>
+    <form action="mailto:equilibriumwellh@aol.com" method="post" enctype="text/plain">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" rows="4" required></textarea>
+
+      <input type="submit" value="Send Message">
+    </form>
+
+    <p onclick="displayWeather()"></p>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script>
+    // Function to toggle between GitHub projects
+    function toggleProjects() {
+      var projects = $(".project");
+      var visibleProjects = projects.filter(".active");
+      var nextIndex = (visibleProjects.index() + 1) % projects.length;
+
+      visibleProjects.removeClass("active");
+      projects.eq(nextIndex).addClass("active");
+    }
+
+    $(document).ready(function() {
+      // GitHub API URL
+      var apiUrl = "https://api.github.com/users/equilibriumwell/repos";
+
+      // Make AJAX call to GitHub API
+      $.ajax({
+        url: apiUrl,
+        method: "GET",
+        success: function(data) {
+          // Process GitHub repositories
+          displayGitHubProjects(data);
+        },
+        error: function(error) {
+          console.error("Error fetching GitHub repositories:", error);
+        }
+      });
+
+      // Function to display GitHub projects
+      function displayGitHubProjects(projects) {
+        var githubProjectsContainer = $("#github-projects");
+
+        // Loop through each GitHub repository and add it to the container
+        projects.forEach(function(project, index) {
+          var projectDiv = $("<div class='project'>");
+          var projectTitle = $("<h3>").text(project.name);
+          var projectDescription = $("<p>").text(project.description || "No description available.");
+          var projectLink = $("<a>").attr("href", project.html_url).attr("target", "_blank").text("View on GitHub");
+
+          projectDiv.append(projectTitle, projectDescription, projectLink);
+          githubProjectsContainer.append(projectDiv);
+
+          // Make the first project active by default
+          if (index === 0) {
+            projectDiv.addClass("active");
+          }
+        });
+      }
+    });
+
+    const apiKey = '6b8f5c3d31b55d87374b39663ba961db';
+    const apiUrl = 'https://api.openweathermap.org/data/2.5/weather';
+
+    // Function to fetch weather data
+    async function getWeather(city) {
+      const response = await fetch(`${apiUrl}?q=${city}&appid=${apiKey}`);
+      const data = await response.json();
+      return data;
+    }
+
+    // Function to display weather information
+    function displayWeather(weatherData) {
+      const weatherInfoElement = document.getElementById('weather-info');
+      
+      // Check if the API request was successful
+      if (weatherData.cod === '404') {
+        weatherInfoElement.innerHTML = `<p>${weatherData.message}</p>`;
+      } else {
+        const { name, weather, main } = weatherData;
+        const temperature = main.temp;
+        const description = weather[0].description;
+
+        weatherInfoElement.innerHTML = `
+          <p>City: ${name}</p>
+          <p>Temperature: ${temperature} K</p>
+          <p>Description: ${description}</p>
+        `;
+      }
+    }
+
+    // Example: Get weather for a specific city (e.g., London)
+    const cityName = 'Atlanta';
+    getWeather(cityName)
+      .then(displayWeather)
+      .catch(error => console.error('Error fetching weather data:', error));
+  </script>
+</body>
+</html>
+
